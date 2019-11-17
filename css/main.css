@@ -30,8 +30,10 @@ ul {
 }
 
 .city-container {
-
-
+    background:#03024E;
+    background-image: url("/images/background.PNG");
+    color: #8392D3;
+    
 
 
 
