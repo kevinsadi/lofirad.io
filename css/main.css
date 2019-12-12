@@ -52,14 +52,16 @@ header{
 }
 
 .city-container {
-    background-image: url("../images/background.jpg");
+    background-image: url("/images/background.jpg");
     -webkit-background-size: cover;
     background-size: 35%;
     
     /*display: flex;
     flex-flow: row wrap; */
+}
 
-
+:root, body{
+    height: 100vh;
 }
 
 .city-container ul{
@@ -78,17 +80,25 @@ header{
     flex-basis: 25%;
 }
 
-@media screen and (max-width:666 px){
+@media screen and (max-width: 666px){
     .city-container{
         background-repeat: repeat-x;
-        background-size: cover;
+        background-size: cover;       
     }
 }
 
+@media screen and (max-width: 666px) {
+    .title-container{
+        background:#FFFFFF;
+    }
+}
+
+
 .playlist-container{
-    background: #FEDFE7; 
+    background: #FEDFE7;
     height: 20em;
 }
+
 
 .footer-container{
     background: #03024E;
@@ -106,7 +116,7 @@ header{
 }
 
 .footer-container li{
-    height: 80px;    
+    height: 70px;    
     flex-basis: 25%;
 }
 
