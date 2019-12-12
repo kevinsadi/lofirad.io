@@ -52,7 +52,7 @@ header{
 }
 
 .city-container {
-    background-image: url("/images/background.jpg");
+    background-image: url("../images/background.jpg");
     -webkit-background-size: cover;
     background-size: 35%;
     
@@ -78,11 +78,17 @@ header{
     flex-basis: 25%;
 }
 
-.playlist-container{
-    background: #FEDFE7;
-    height: 20em;
+@media screen and (max-width:666 px){
+    .city-container{
+        background-repeat: repeat-x;
+        background-size: cover;
+    }
 }
 
+.playlist-container{
+    background: #FEDFE7; 
+    height: 20em;
+}
 
 .footer-container{
     background: #03024E;
@@ -100,7 +106,7 @@ header{
 }
 
 .footer-container li{
-    height: 70px;    
+    height: 80px;    
     flex-basis: 25%;
 }
 
