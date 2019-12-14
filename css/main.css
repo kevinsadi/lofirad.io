@@ -105,25 +105,9 @@ header{
     flex-direction: column;
 }
 
-.song h2 h3{
-    margin-top: auto;
-    flex-grow: 4;
-    align-content: stretch;
-    flex-basis: 123px;
+#play{
+    width: 75px;
 }
-
-.controllers{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    align-content: center;
-}
-
-.controllers img{
-    color:
-}
-
-
 
 .footer-container{
     background: #03024E;
