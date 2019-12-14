@@ -51,13 +51,16 @@ header{
 
 }
 
+@media screen and (max-width: 666px){
+    .title-container{
+        font-size: 1.5em;      
+    }
+}
+
 .city-container {
     background-image: url("/images/background.jpg");
     -webkit-background-size: cover;
     background-size: 35%;
-    
-    /*display: flex;
-    flex-flow: row wrap; */
 }
 
 :root, body{
@@ -71,13 +74,21 @@ header{
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-content: center;
+}
 
-
+@media screen and (max-width: 666px){
+    .city-container ul{
+        font-size: 1.5em;      
+    }
 }
 
 .city-container li{
     height: 70px;    
-    flex-basis: 25%;
+    flex-basis: 30%;
+}
+
+.city-container li a{
+    cursor: pointer;
 }
 
 @media screen and (max-width: 666px){
@@ -87,17 +98,31 @@ header{
     }
 }
 
-@media screen and (max-width: 666px) {
-    .title-container{
-        background:#FFFFFF;
-    }
-}
-
-
 .playlist-container{
     background: #FEDFE7;
     height: 20em;
+    display: flex;
+    flex-direction: column;
 }
+
+.song h2 h3{
+    margin-top: auto;
+    flex-grow: 4;
+    align-content: stretch;
+    flex-basis: 123px;
+}
+
+.controllers{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.controllers img{
+    color:
+}
+
 
 
 .footer-container{
@@ -112,13 +137,19 @@ header{
     justify-content: space-evenly;
     align-content: center;
 
+}
 
+@media screen and (max-width: 666px){
+    .footer-container ul{
+        font-size: 1.5em;      
+    }
 }
 
 .footer-container li{
     height: 70px;    
     flex-basis: 25%;
 }
+
 
 
 

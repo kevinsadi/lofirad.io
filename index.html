@@ -7,6 +7,7 @@
     <title>TheLofiRad.io</title>
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
     <link rel = "stylesheet" href ="css/main.css"> 
+    <script src="scripts/main.js"></script>
 </head>
 <body>
     <div class="title-container">
@@ -21,12 +22,11 @@
          </div>
     </div>
 
-
     <div class="city-container">
         <div class="container">
             <section>
                 <ul>
-                    <li> <a>vocalfree </a> </li>
+                    <li> <a>vocalfree</a> </li>
                     <li> <a>nostalgic</a> </li>
                     <li> <a>calm</a> </li>
                     <li> <a>jazzy</a> </li>
@@ -42,19 +42,20 @@
 
     <div class="playlist-container">
         <div class="container">
-            <h2>Current Song</h2>
-            
-            
-            
-            <img src="images/playlist-left" alt ="playlist-left">
-            <img src="images/playlist-right" alt ="playlist-right">
-            <img src="images/playlist-pause" alt ="playlist-pause">
-        
+            <div class="song">
+                <h2>artist</h2>
+                <h3>current song</h3>
+            </div>
+
+            <div class="controllers"></div>
+                <img id="left" src="images/left.png" alt ="playlist-left">
+                <img id="play" src="images/play.png" alt ="playlist-pause">
+                <img id="right" src="images/right.png" alt ="playlist-right">
+            </div>
         
         
         </div>
     </div>
-
 
     <footer>
         <div class="footer-container">
@@ -67,6 +68,7 @@
             </div>
         </div>
     </footer>
-    
 </body>
 </html>
+
+<script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
