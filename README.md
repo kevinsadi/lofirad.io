@@ -3,5 +3,5 @@ A lofi radio webapp. Uses the soundcloud api to access lists of specifically cur
 
 <h3> Songs curated by </h3>
 kekin.sadi <br>
-Sudhan Chitgopkar <br>
+Sudhan Chitgopkar https://open.spotify.com/user/sudhan.chitgopkar?si=Jme7xNf_TFaAoH-4deeAOg <br>
 Jacob <br>
