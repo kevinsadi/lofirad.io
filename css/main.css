@@ -89,6 +89,7 @@ header{
 
 .city-container li a{
     cursor: pointer;
+    user-select: none;
 }
 
 @media screen and (max-width: 666px){
@@ -109,12 +110,20 @@ header{
     width: 75px;
 }
 
+#right{
+    width: 50px;
+}
+
+#left{
+    width: 50px;
+}
+
 .footer-container{
     background: #03024E;
 }
 
 .footer-container ul{
-    font-size:2em;
+    font-size: 2em;
 
     display: flex;
     flex-flow: row wrap;
