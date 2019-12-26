@@ -3,18 +3,18 @@ var currentSong = 1; //int
 var songIncrement = 0;
 
 // get playlist functions
-//const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
+const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
 // TODO: get a working cors proxy or something
-const beforeFetchURL = 'http://10.0.0.8:8069/miniProxy.php?';
+//const beforeFetchURL = 'http://10.0.0.8:8069/miniProxy.php?';
 
 //function getVocalFree(){
 function playButtonOnClick(event) {
-  loading();
+  startLoading();
 
   // event.target is the button
   console.log(event.target.dataset.play)
 
-  var playlist = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
+  var request = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
 + '?representation=full&format=json&client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
   .then(response => response.json())
   .then(function(playlist) {
@@ -27,6 +27,8 @@ function playButtonOnClick(event) {
       updateSong();
       playSong();
     }
+
+    stopLoading();
   });
 }
 
@@ -45,16 +47,26 @@ console.log(audioElement);
 
 function playSong(){
   console.log('play');
-  // TODO: this is the song url to be played
-  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y');
+  urlToGetURL = currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y';
+  console.log(urlToGetURL);
+
+  var request = fetch(beforeFetchURL + urlToGetURL)
+  .then(response => response.json())
+  .then(function(urlObj) {
+    const urlReal = urlObj['url'];
+    // we have url real now....
+    console.log('now we have url real ok    ok')
+    console.log(urlReal)
+  })
 
   // if (audioContext.state === 'suspended') {
   //   audioContext.resume();
   // }
 
+  // this whole thing is "kinda broke" SORRY....!!!...... OWO UWU HTTPS BRUH MIGGA
   audioElement.src = (currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y');
-  audioElement.play();
- 
+  //audioElement.play();
+
   if (audioElement.paused === 'true') {
     console.log('should play');
     audioElement.play();
@@ -76,9 +88,6 @@ function updateSong(){
 
   document.getElementById('artist').innerText = (currentArtist);
   document.getElementById('song').innerText = (currentSong);
-
-  document.getElementsByClassName('spinner')[0].style.display = "none";
-  document.getElementsByClassName('song')[0].style.display = "block";
 }
 
 // skip song
@@ -119,11 +128,16 @@ document.getElementById('play').addEventListener('click', function() {
 });
 
 //loading animation and hides
-document.getElementsByClassName('spinner')[0].style.display = "none";
+var loadingSpinner = document.getElementsByClassName('spinner')[0];
+var songDisplay = document.getElementsByClassName('song')[0];
 
-function loading(){
-  document.getElementsByClassName('spinner')[0].style.display = "block";
-  document.getElementsByClassName('spinner')[0].style.display= "none";
+function startLoading() {
+  songDisplay.style.display = "none";
+  loadingSpinner.style.display = "block";
+}
+function stopLoading() {
+  songDisplay.style.display = "block";
+  loadingSpinner.style.display = "none";
 }
 
 /*
