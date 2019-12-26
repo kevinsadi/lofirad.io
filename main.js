@@ -8,7 +8,10 @@ const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
 //function getVocalFree(){
 function playButtonOnClick(event) {
   loading();
+
+  // event.target is the button
   console.log(event.target.dataset.play)
+
   var playlist = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
 + '?representation=full&format=json&client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
   .then(response => response.json())
@@ -34,7 +37,8 @@ for (var i = 0; i < playButtons.length; i++){
 // play function
 function playSong(){
   console.log('play')
-  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'])
+  // TODO: this is the song url to be played
+  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
 }
 
 // functions for updating song titles
@@ -44,12 +48,12 @@ var currentSong;
 function updateSong(){
   currentArtist = currentQueue[songIncrement].user.username;
   currentSong = currentQueue[songIncrement].title;
-  
+
   document.getElementById('artist').innerText = (currentArtist);
   document.getElementById('song').innerText = (currentSong);
 
-  document.querySelector('.spinner').style.display = "none";
-  document.querySelector('.song').style.display = "block";
+  document.getElementsByClassName('spinner')[0].style.display = "none";
+  document.getElementsByClassName('song')[0].style.display = "block";
 }
 
 // skip song
@@ -86,14 +90,9 @@ left.addEventListener('click',()=>{
 });
 
 //loading animation and hides
-document.querySelector('.spinner').style.display = "none";
+document.getElementsByClassName('spinner')[0].style.display = "none";
 
 function loading(){
-  document.querySelector('.spinner').style.display = "block";
-  document.querySelector('.song').style.display= "none";
+  document.getElementsByClassName('spinner')[0].style.display = "block";
+  document.getElementsByClassName('spinner')[0].style.display= "none";
 }
-
-
-/*SC.initialize({
-    client_id: 'r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y',
-});*/
