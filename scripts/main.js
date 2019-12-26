@@ -1,6 +1,7 @@
 // variables
 var currentQueue = ['song', 'yes'];
 var currentSong = 1; //int
+var songIncrement = 0;
 
 
 
@@ -21,6 +22,10 @@ function getVocalFree(){
       for (var i = 0; i < playlist.tracks.length; i++){
         currentQueue[i] = playlist.tracks[i];
       }
+      currentSong = currentQueue[songIncrement].user.username;
+      console.log(currentSong);
+      updateSong();
+      playSong();
   });
 }
 
@@ -29,6 +34,9 @@ function getHeartbreak(){
       for (var i = 0; i < playlist.tracks.length; i++){
         currentQueue[i] = playlist.tracks[i];
       }
+      currentSong = currentQueue[songIncrement].user.username;
+      console.log(currentSong);
+      updateSong();
   });
 }
 
@@ -39,6 +47,9 @@ function getChill(){
     for (var i = 0; i < playlist.tracks.length; i++){
       currentQueue[i] = playlist.tracks[i];
     }
+    currentSong = currentQueue[songIncrement].user.username;
+    console.log(currentSong);
+    updateSong();
   });
 }
 
@@ -47,6 +58,9 @@ function getJapanese(){
     for (var i = 0; i < playlist.tracks.length; i++){
       currentQueue[i] = playlist.tracks[i];
     }
+    currentSong = currentQueue[songIncrement].user.username;
+    console.log(currentSong);
+    updateSong();
   });
 }
 
@@ -55,6 +69,9 @@ function getMeme(){
       for (var i = 0; i < playlist.tracks.length; i++){
         currentQueue[i] = playlist.tracks[i];
       }
+      currentSong = currentQueue[songIncrement].user.username;
+      console.log(currentSong);
+      updateSong();
   });
 }
 
@@ -63,6 +80,9 @@ function getSeasonal(){
     for (var i = 0; i < playlist.tracks.length; i++){
       currentQueue[i] = playlist.tracks[i];
     }
+    currentSong = currentQueue[songIncrement].user.username;
+    console.log(currentSong);
+    updateSong();
   });
 }
 
@@ -71,6 +91,9 @@ function getJazzy(){
     for (var i = 0; i < playlist.tracks.length; i++){
       currentQueue[i] = playlist.tracks[i];
     }
+    currentSong = currentQueue[songIncrement].user.username;
+    console.log(currentSong);
+    updateSong();
   });
 }
 
@@ -79,6 +102,11 @@ function getHipHop(){
       for (var i = 0; i < playlist.tracks.length; i++){
         currentQueue[i] = playlist.tracks[i];
       }
+
+      currentSong = currentQueue[songIncrement].user.username;
+      console.log(currentSong);
+      updateSong();
+
   });
 }
 
@@ -87,8 +115,9 @@ function getGaming(){
       for (var i = 0; i < playlist.tracks.length; i++){
         currentQueue[i] = playlist.tracks[i];
       }
-
-
+      currentSong = currentQueue[songIncrement].user.username;
+      console.log(currentSong);
+      updateSong();
   });
 }
 
@@ -99,13 +128,15 @@ console.log(currentQueue);
 
 // play function
 
-// SC.stream('/tracks/337223917').then(function(player){
-//     player.play().then(function(){
-//       console.log('Playback started!');
-//     }).catch(function(e){
-//       console.error('Playback rejected. Try calling play() from a user interaction.', e);
-//     });
-//   });
+function playSong(){
+  SC.stream('/tracks/337223917').then(function(player){
+      player.play().then(function(){
+        console.log('Playback started!');
+      }).catch(function(e){
+        console.error('Playback rejected. Try calling play() from a user interaction.', e);
+      });
+    });
+}
 
 // console.log('f in the fucking chat boys');
 
@@ -115,8 +146,8 @@ var currentArtist;
 var currentSong;
 
 function updateSong(){
-  currentArtist = currentQueue[0].user.username;
-  currentSong = currentQueue[0].title;
+  currentArtist = currentQueue[songIncrement].user.username;
+  currentSong = currentQueue[songIncrement].title;
   
   document.getElementById('artist').innerText = (currentArtist);
   document.getElementById('song').innerText = (currentSong);
@@ -125,77 +156,88 @@ function updateSong(){
 // Adding event listeners for subgenres
 var vocalFree = document.getElementById('vocalfree');
 vocalFree.addEventListener('click', ()=>{
+  songIncrement = 0;
   getVocalFree();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var heartbreak = document.getElementById('heartbreak');
 heartbreak.addEventListener('click', ()=>{
+  songIncrement = 0;
   getHeartbreak();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var calm = document.getElementById('calm');
 calm.addEventListener('mousedown', ()=>{
+  songIncrement = 0;
   getChill();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var japanese = document.getElementById('japanese');
 japanese.addEventListener('mousedown', ()=>{
+  songIncrement = 0;
   getJapanese();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var meme = document.getElementById('meme');
 meme.addEventListener('mousedown', ()=>{
+  songIncrement = 0;
   getMeme();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var seasonal = document.getElementById('seasonal');
 seasonal.addEventListener('click', ()=>{
+  songIncrement = 0;
   getSeasonal();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var jazzy = document.getElementById('jazzy');
 jazzy.addEventListener('click', ()=>{
+  songIncrement = 0;
   getJazzy();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var hiphop = document.getElementById('hiphop');
 hiphop.addEventListener('click', ()=>{
+  songIncrement = 0;
   getHipHop();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 var gaming = document.getElementById('gaming');
 gaming.addEventListener('click', ()=>{
+  songIncrement = 0;
   getGaming();
-  currentSong = currentQueue[0].user.username;
-  console.log(currentSong);
-  updateSong();
 });
 
 
+// skip song
+
+function skipSong(){
+  songIncrement++;
+}
+
+// previous song
+
+function previousSong(){
+  songIncrement--;
+}
+
+// event listener for navigation arrows
+var right = document.getElementById('right');
+right.addEventListener('click', ()=>{
+  skipSong();
+  updateSong();
+});
+
+var left = document.getElementById('left');
+left.addEventListener('click',()=>{
+  previousSong();
+  updateSong();
+});
+
+var play = document.getElementById('play');
+play.addEventListener('click',()=>{
+  playSong();
+});
 
 
 

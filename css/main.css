@@ -14,8 +14,6 @@ ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-
-
 }
 
 .logo{
@@ -106,16 +104,23 @@ header{
     flex-direction: column;
 }
 
+.controllers {
+    display: block;
+}
+
 #play{
     width: 75px;
+    margin-top: 60px;
 }
 
 #right{
     width: 50px;
+    margin-left: 20px;
 }
 
 #left{
     width: 50px;
+    margin-right: 20px;
 }
 
 .footer-container{
@@ -130,6 +135,8 @@ header{
     justify-content: space-evenly;
     align-content: center;
 
+    padding-top: 40px;
+
 }
 
 @media screen and (max-width: 666px){
@@ -142,6 +149,7 @@ header{
     height: 70px;    
     flex-basis: 25%;
 }
+
 
 
 
