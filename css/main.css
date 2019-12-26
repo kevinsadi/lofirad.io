@@ -59,6 +59,7 @@ header{
     background-image: url("/images/background.jpg");
     -webkit-background-size: cover;
     background-size: 35%;
+    padding-top: 20px;
 }
 
 :root, body{
@@ -106,21 +107,25 @@ header{
 
 .controllers {
     display: block;
+    cursor: pointer;
 }
 
 #play{
     width: 75px;
     margin-top: 60px;
+    cursor: pointer;
 }
 
 #right{
     width: 50px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 #left{
     width: 50px;
     margin-right: 20px;
+    cursor: pointer;
 }
 
 .footer-container{
