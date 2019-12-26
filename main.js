@@ -3,7 +3,9 @@ var currentSong = 1; //int
 var songIncrement = 0;
 
 // get playlist functions
-const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
+//const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
+// TODO: get a working cors proxy or something
+const beforeFetchURL = 'http://10.0.0.8:8069/miniProxy.php?';
 
 //function getVocalFree(){
 function playButtonOnClick(event) {
@@ -75,15 +77,13 @@ function previousSong(){
 }
 
 // event listener for navigation arrows
-var right = document.getElementById('right');
-right.addEventListener('click', ()=>{
+document.getElementById('right').addEventListener('click', function() {
   loading();
   skipSong();
   updateSong();
 });
 
-var left = document.getElementById('left');
-left.addEventListener('click',()=>{
+document.getElementById('left').addEventListener('click', function() {
   loading();
   previousSong();
   updateSong();
@@ -96,3 +96,21 @@ function loading(){
   document.getElementsByClassName('spinner')[0].style.display = "block";
   document.getElementsByClassName('spinner')[0].style.display= "none";
 }
+
+/*
+// this is what's called when the play/pause button is clicked
+function togglePlayPause(event) {
+  if(event.target.id === 'play') {
+    //alert('play -> pause')
+    playPauseButton.id = 'pause';
+    playPauseButton.src = 'images/pause.png';
+  } else {
+    //alert('pause -> play')
+    playPauseButton.id = 'play';
+    playPauseButton.src = 'images/play.png';
+  }
+}
+
+var playPauseButton = document.getElementsByClassName('playPause')[0];
+playPauseButton.addEventListener('click', togglePlayPause);
+*/
