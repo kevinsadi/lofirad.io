@@ -37,10 +37,33 @@ for (var i = 0; i < playButtons.length; i++){
 }
 
 // play function
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+const audioContext = new AudioContext();
+const audioElement = document.querySelector('audio');
+console.log(audioElement);
+// const track = AudioContext.createMediaElementSource(audioElement);
+
 function playSong(){
-  console.log('play')
+  console.log('play');
   // TODO: this is the song url to be played
-  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
+  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y');
+
+  // if (audioContext.state === 'suspended') {
+  //   audioContext.resume();
+  // }
+
+  audioElement.src = (currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y');
+  audioElement.play();
+ 
+  if (audioElement.paused === 'true') {
+    console.log('should play');
+    audioElement.play();
+    // this.dataset.playing = 'true';
+  } else if (audioElement.paused === 'false') {
+    console.log('should pause');
+    audioElement.pause();
+    // this.dataset.playing = 'false';
+  }
 }
 
 // functions for updating song titles
@@ -86,6 +109,12 @@ document.getElementById('right').addEventListener('click', function() {
 document.getElementById('left').addEventListener('click', function() {
   loading();
   previousSong();
+  updateSong();
+});
+
+document.getElementById('play').addEventListener('click', function() {
+  loading();
+  playSong();
   updateSong();
 });
 
