@@ -1,23 +1,13 @@
-// variables
-//var currentQueue = ['song', 'yes'];
 var currentQueue = [];
 var currentSong = 1; //int
 var songIncrement = 0;
 
-// initializing
-//console.log(SC);
-
-/*SC.initialize({
-    client_id: 'r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y',
-});*/
-
 // get playlist functions
-
-//const beforeFetchURL = 'http://127.0.0.1:8000/miniProxy.php?';
 const beforeFetchURL = 'https://cors-anywhere.herokuapp.com/';
 
 //function getVocalFree(){
 function playButtonOnClick(event) {
+  loading();
   console.log(event.target.dataset.play)
   var playlist = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
 + '?representation=full&format=json&client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
@@ -35,34 +25,19 @@ function playButtonOnClick(event) {
   });
 }
 
-//console.log(currentQueue);
-
-// sorry
-
+//adding event listeners for all the buttons
 var playButtons = document.getElementsByClassName('play-button')
 for (var i = 0; i < playButtons.length; i++){
   playButtons[i].addEventListener('click', playButtonOnClick)
 }
 
 // play function
-
 function playSong(){
   console.log('play')
   console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'])
- /* SC.stream('/tracks/337223917').then(function(player){
-      player.play().then(function(){
-        console.log('Playback started!');
-      }).catch(function(e){
-        console.error('Playback rejected. Try calling play() from a user interaction.', e);
-      });
-    });
- */
-
 }
-// console.log('f in the fl*pping chat boys');
 
 // functions for updating song titles
-
 var currentArtist;
 var currentSong;
 
@@ -110,25 +85,6 @@ left.addEventListener('click',()=>{
   updateSong();
 });
 
-// var play = document.getElementById('playPause');
-// play.addEventListener('click',()=>{
-//   // playSong();
-//   pausePlay();
-// });
-
-var pauseplay = document.querySelector('.playPause');
-pauseplay.addEventListener('click',()=>{
-  // playSong();
-  pauseplay.src = ("images/play.png");
-  pauseplay.querySelector('playPause').id = ('play');
-});
-
-pauseplay.addEventListener('click',()=>{
-  // playSong();
-  pauseplay.querySelector('playPause').src = ("images/pause.png");
-  pauseplay.querySelector('playPause').id = ('pause');
-});
-
 //loading animation and hides
 document.querySelector('.spinner').style.display = "none";
 
@@ -137,26 +93,7 @@ function loading(){
   document.querySelector('.song').style.display= "none";
 }
 
-//changing play button to pause button when music is playing
-// function pausePlay(){
-//   document.getElementById('play').src = ("images/pause.png");
-//   document.getElementById('play').id = ('pause');
-// }
 
-// function playPause(){
-//   document.getElementById('pause').src = ("images/play.png");
-//   document.getElementById('pause').id = ('play');
-// }
-
-
-//    console.log(playlist)
-
-//trash so I don't forget whats happening
-
-// //jazzy
-// SC.get('/playlists/944951920').then(function(playlist) {
-//   console.log(playlist.tracks);
-//   playlist.tracks.forEach(function(track) {
-//     // console.log(track);
-//   });
-// });
+/*SC.initialize({
+    client_id: 'r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y',
+});*/
