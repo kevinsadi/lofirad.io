@@ -25,7 +25,6 @@ function playButtonOnClick(event) {
       currentSong = currentQueue[songIncrement].user.username;
       //console.log(currentSong);
       updateSong();
-      playSong();
     }
 
     stopLoading();
@@ -48,15 +47,21 @@ console.log(audioElement);
 function playSong(){
   console.log('play');
   urlToGetURL = currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y';
-  console.log(urlToGetURL);
+  // console.log(urlToGetURL);
 
   var request = fetch(beforeFetchURL + urlToGetURL)
   .then(response => response.json())
   .then(function(urlObj) {
     const urlReal = urlObj['url'];
     // we have url real now....
-    console.log('now we have url real ok    ok')
-    console.log(urlReal)
+    console.log('now we have url real');
+    // console.log(urlReal)
+
+//play part
+
+    audioElement.src = (urlReal);
+    //stopLoading();
+    audioElement.play();
   })
 
   // if (audioContext.state === 'suspended') {
@@ -64,18 +69,16 @@ function playSong(){
   // }
 
   // this whole thing is "kinda broke" SORRY....!!!...... OWO UWU HTTPS BRUH MIGGA
-  audioElement.src = (currentQueue[songIncrement]['media']['transcodings'][1]['url'] + '?client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y');
-  //audioElement.play();
 
-  if (audioElement.paused === 'true') {
-    console.log('should play');
-    audioElement.play();
-    // this.dataset.playing = 'true';
-  } else if (audioElement.paused === 'false') {
-    console.log('should pause');
-    audioElement.pause();
-    // this.dataset.playing = 'false';
-  }
+  // if (audioElement.paused === 'true') {
+  //   console.log('should play');
+  //   audioElement.play();
+  //   // this.dataset.playing = 'true';
+  // } else if (audioElement.paused === 'false') {
+  //   console.log('should pause');
+  //   audioElement.pause();
+  //   // this.dataset.playing = 'false';
+  // }
 }
 
 // functions for updating song titles
@@ -110,19 +113,20 @@ function previousSong(){
 
 // event listener for navigation arrows
 document.getElementById('right').addEventListener('click', function() {
-  loading();
+  console.log('hey');
+  //startLoading();
   skipSong();
   updateSong();
 });
 
 document.getElementById('left').addEventListener('click', function() {
-  loading();
+  //startLoading();
   previousSong();
   updateSong();
 });
 
 document.getElementById('play').addEventListener('click', function() {
-  loading();
+  //startLoading();
   playSong();
   updateSong();
 });
