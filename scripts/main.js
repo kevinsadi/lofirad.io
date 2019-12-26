@@ -1,134 +1,64 @@
 // variables
-var currentQueue = ['song', 'yes'];
+//var currentQueue = ['song', 'yes'];
+var currentQueue = [];
 var currentSong = 1; //int
 var songIncrement = 0;
 
 // initializing
-console.log(SC);
+//console.log(SC);
 
-SC.initialize({
+/*SC.initialize({
     client_id: 'r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y',
-});
+});*/
 
 // get playlist functions
 
-function getVocalFree(){
-  SC.get('/playlists/368429987').then(function(playlist) {
-      for (var i = 0; i < playlist.tracks.length; i++){
-        currentQueue[i] = playlist.tracks[i];
-      }
+const beforeFetchURL = 'http://127.0.0.1:8000/miniProxy.php?';
+
+//function getVocalFree(){
+function playButtonOnClick(event) {
+  console.log(event.target.dataset.play)
+  var playlist = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
++ '?representation=full&format=json&client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
+  .then(response => response.json())
+  .then(function(playlist) {
+    console.log(playlist)
+    //SC.get('/playlists/368429987').then(function(playlist) {
+    for (var i = 0; i < playlist.tracks.length; i++){
+      currentQueue[i] = playlist.tracks[i];
       currentSong = currentQueue[songIncrement].user.username;
-      console.log(currentSong);
+      //console.log(currentSong);
       updateSong();
       playSong();
-  });
-}
-
-function getHeartbreak(){
-  SC.get('/playlists/945437497').then(function(playlist) {
-      for (var i = 0; i < playlist.tracks.length; i++){
-        currentQueue[i] = playlist.tracks[i];
-      }
-      currentSong = currentQueue[songIncrement].user.username;
-      console.log(currentSong);
-      updateSong();
-  });
-}
-
-function getChill(){
-  SC.get('/playlists/944939650').then(function(playlist) {
-    console.log(playlist.tracks);  
-    
-    for (var i = 0; i < playlist.tracks.length; i++){
-      currentQueue[i] = playlist.tracks[i];
     }
-    currentSong = currentQueue[songIncrement].user.username;
-    console.log(currentSong);
-    updateSong();
   });
 }
 
-function getJapanese(){
-  SC.get('/playlists/945453487').then(function(playlist) {
-    for (var i = 0; i < playlist.tracks.length; i++){
-      currentQueue[i] = playlist.tracks[i];
-    }
-    currentSong = currentQueue[songIncrement].user.username;
-    console.log(currentSong);
-    updateSong();
-  });
+//console.log(currentQueue);
+
+// sorry
+
+var playButtons = document.getElementsByClassName('play-button')
+for (var i = 0; i < playButtons.length; i++){
+  playButtons[i].addEventListener('click', playButtonOnClick)
 }
-
-function getMeme(){
-  SC.get('/playlists/945461548').then(function(playlist) {
-      for (var i = 0; i < playlist.tracks.length; i++){
-        currentQueue[i] = playlist.tracks[i];
-      }
-      currentSong = currentQueue[songIncrement].user.username;
-      console.log(currentSong);
-      updateSong();
-  });
-}
-
-function getSeasonal(){
-  SC.get('/playlists/945594007').then(function(playlist) {
-    for (var i = 0; i < playlist.tracks.length; i++){
-      currentQueue[i] = playlist.tracks[i];
-    }
-    currentSong = currentQueue[songIncrement].user.username;
-    console.log(currentSong);
-    updateSong();
-  });
-}
-
-function getJazzy(){
-  SC.get('/playlists/944951920').then(function(playlist) {
-    for (var i = 0; i < playlist.tracks.length; i++){
-      currentQueue[i] = playlist.tracks[i];
-    }
-    currentSong = currentQueue[songIncrement].user.username;
-    console.log(currentSong);
-    updateSong();
-  });
-}
-
-function getHipHop(){
-  SC.get('/playlists/945448732').then(function(playlist) {
-      for (var i = 0; i < playlist.tracks.length; i++){
-        currentQueue[i] = playlist.tracks[i];
-      }
-
-      currentSong = currentQueue[songIncrement].user.username;
-      console.log(currentSong);
-      updateSong();
-
-  });
-}
-
-function getGaming(){
-  SC.get('/playlists/945596899').then(function(playlist) {
-      for (var i = 0; i < playlist.tracks.length; i++){
-        currentQueue[i] = playlist.tracks[i];
-      }
-      currentSong = currentQueue[songIncrement].user.username;
-      console.log(currentSong);
-      updateSong();
-  });
-}
-console.log(currentQueue);
 
 // play function
 
 function playSong(){
-  SC.stream('/tracks/337223917').then(function(player){
+  console.log('play')
+  console.log(currentQueue[songIncrement]['media']['transcodings'][1]['url'])
+ /* SC.stream('/tracks/337223917').then(function(player){
       player.play().then(function(){
         console.log('Playback started!');
       }).catch(function(e){
         console.error('Playback rejected. Try calling play() from a user interaction.', e);
       });
     });
+ */
+
 }
-// console.log('f in the fucking chat boys');
+// console.log('f in the fl*pping chat boys');
 
 // functions for updating song titles
 
@@ -145,70 +75,6 @@ function updateSong(){
   document.querySelector('.spinner').style.display = "none";
   document.querySelector('.song').style.display = "block";
 }
-
-// Adding event listeners for subgenres
-var vocalFree = document.getElementById('vocalfree');
-vocalFree.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getVocalFree();
-});
-
-var heartbreak = document.getElementById('heartbreak');
-heartbreak.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getHeartbreak();
-});
-
-var calm = document.getElementById('calm');
-calm.addEventListener('mousedown', ()=>{
-  loading();  
-  songIncrement = 0;
-  getChill();
-});
-
-var japanese = document.getElementById('japanese');
-japanese.addEventListener('mousedown', ()=>{
-  loading();
-  songIncrement = 0;
-  getJapanese();
-});
-
-var meme = document.getElementById('meme');
-meme.addEventListener('mousedown', ()=>{
-  loading();
-  songIncrement = 0;
-  getMeme();
-});
-
-var seasonal = document.getElementById('seasonal');
-seasonal.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getSeasonal();
-});
-
-var jazzy = document.getElementById('jazzy');
-jazzy.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getJazzy();
-});
-
-var hiphop = document.getElementById('hiphop');
-hiphop.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getHipHop();
-});
-
-var gaming = document.getElementById('gaming');
-gaming.addEventListener('click', ()=>{
-  loading();
-  songIncrement = 0;
-  getGaming();
-});
 
 // skip song
 function skipSong(){
@@ -282,7 +148,7 @@ function loading(){
 // }
 
 
-
+//    console.log(playlist)
 
 //trash so I don't forget whats happening
 
