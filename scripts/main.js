@@ -3,17 +3,12 @@ var currentQueue = ['song', 'yes'];
 var currentSong = 1; //int
 var songIncrement = 0;
 
-
-
-
 // initializing
 console.log(SC);
 
 SC.initialize({
     client_id: 'r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y',
 });
-
-
 
 // get playlist functions
 
@@ -120,11 +115,7 @@ function getGaming(){
       updateSong();
   });
 }
-
-
-
 console.log(currentQueue);
-
 
 // play function
 
@@ -137,7 +128,6 @@ function playSong(){
       });
     });
 }
-
 // console.log('f in the fucking chat boys');
 
 // functions for updating song titles
@@ -208,15 +198,12 @@ gaming.addEventListener('click', ()=>{
   getGaming();
 });
 
-
 // skip song
-
 function skipSong(){
   songIncrement++;
 }
 
 // previous song
-
 function previousSong(){
   songIncrement--;
 }

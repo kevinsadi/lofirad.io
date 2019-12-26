@@ -45,8 +45,6 @@ header{
     background: #FEDFE7;
     color: #8392D3;
     font-size: 2em;
-    
-
 }
 
 @media screen and (max-width: 666px){
@@ -141,7 +139,6 @@ header{
     align-content: center;
 
     padding-top: 40px;
-
 }
 
 @media screen and (max-width: 666px){
