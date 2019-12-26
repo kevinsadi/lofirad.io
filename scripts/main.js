@@ -213,11 +213,19 @@ gaming.addEventListener('click', ()=>{
 // skip song
 function skipSong(){
   songIncrement++;
+
+  if(songIncrement > (currentQueue.length - 1)){
+    songIncrement = 0;
+  }
 }
 
 // previous song
 function previousSong(){
   songIncrement--;
+
+  if (songIncrement < 0){
+    songIncrement = (currentQueue.length - 1);
+  }
 }
 
 // event listener for navigation arrows
@@ -235,9 +243,23 @@ left.addEventListener('click',()=>{
   updateSong();
 });
 
-var play = document.getElementById('play');
-play.addEventListener('click',()=>{
-  playSong();
+// var play = document.getElementById('playPause');
+// play.addEventListener('click',()=>{
+//   // playSong();
+//   pausePlay();
+// });
+
+var pauseplay = document.querySelector('.playPause');
+pauseplay.addEventListener('click',()=>{
+  // playSong();
+  pauseplay.src = ("images/play.png");
+  pauseplay.querySelector('playPause').id = ('play');
+});
+
+pauseplay.addEventListener('click',()=>{
+  // playSong();
+  pauseplay.querySelector('playPause').src = ("images/pause.png");
+  pauseplay.querySelector('playPause').id = ('pause');
 });
 
 //loading animation and hides
@@ -248,7 +270,16 @@ function loading(){
   document.querySelector('.song').style.display= "none";
 }
 
+//changing play button to pause button when music is playing
+// function pausePlay(){
+//   document.getElementById('play').src = ("images/pause.png");
+//   document.getElementById('play').id = ('pause');
+// }
 
+// function playPause(){
+//   document.getElementById('pause').src = ("images/play.png");
+//   document.getElementById('pause').id = ('play');
+// }
 
 
 

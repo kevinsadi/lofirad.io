@@ -1,5 +1,9 @@
 @import url('ttps://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap');
 
+a{
+    color: #8392D3;
+}
+
 body {
     margin: 0;
     font-family: 'Source Code Pro', monospace;
@@ -110,6 +114,12 @@ header{
 
 #play{
     width: 75px;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+#pause{
+    width: 50px;
     margin-top: 60px;
     cursor: pointer;
 }
