@@ -81,6 +81,10 @@ function playSong(){
   // }
 }
 
+function pauseSong() {
+  audioElement.pause();
+}
+
 // functions for updating song titles
 var currentArtist;
 var currentSong;
@@ -127,9 +131,27 @@ document.getElementById('left').addEventListener('click', function() {
 
 document.getElementById('play').addEventListener('click', function() {
   //startLoading();
-  playSong();
-  updateSong();
+  /*if(!audioElement.paused) {
+    */playSong();
+    updateSong();
+  /*} else {
+    // resume.....
+    audioElement.play();
+  }
+
+  // make it say pause idk ok
+  playPauseButton.id = 'pause';
+  playPauseButton.src = 'images/pause.png';
+  */
 });
+
+/*document.getElementById('pause').addEventListener('click', function() {
+  //startLoading();
+  pauseSong();
+  playPauseButton.id = 'play';
+  playPauseButton.src = 'images/play.png';
+  //updateSong();
+});*/
 
 //loading animation and hides
 var loadingSpinner = document.getElementsByClassName('spinner')[0];
@@ -157,7 +179,8 @@ function togglePlayPause(event) {
     playPauseButton.src = 'images/play.png';
   }
 }
+*/
 
 var playPauseButton = document.getElementsByClassName('playPause')[0];
-playPauseButton.addEventListener('click', togglePlayPause);
-*/
+//playPauseButton.addEventListener('click', togglePlayPause);
+
