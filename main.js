@@ -21,12 +21,15 @@ function playButtonOnClick(event) {
     console.log(playlist)
     //SC.get('/playlists/368429987').then(function(playlist) {
     for (var i = 0; i < playlist.tracks.length; i++){
+      songIncrement = 0;
+      
       currentQueue[i] = playlist.tracks[i];
-      currentSong = currentQueue[songIncrement].user.username;
+      currentSong = currentQueue[i].user.username;
       //console.log(currentSong);
       updateSong();
     }
 
+    playSong();
     stopLoading();
   });
 }
@@ -120,25 +123,34 @@ document.getElementById('right').addEventListener('click', function() {
   console.log('hey');
   //startLoading();
   skipSong();
+  playSong();
   updateSong();
 });
 
 document.getElementById('left').addEventListener('click', function() {
   //startLoading();
   previousSong();
+  playSong();
   updateSong();
 });
 
 document.getElementById('play').addEventListener('click', function() {
   //startLoading();
-  /*if(!audioElement.paused) {
-    */playSong();
-    updateSong();
-  /*} else {
+  if(!audioElement.paused) {
+    console.log('please');
+    pauseSong();
+    playPauseButton.id = 'play';
+    playPauseButton.src = 'images/play.png';
+  }
+  else {
     // resume.....
+    console.log('paused');
     audioElement.play();
+    playPauseButton.id = 'pause';
+    playPauseButton.src = 'images/pause.png'
   }
 
+  /*
   // make it say pause idk ok
   playPauseButton.id = 'pause';
   playPauseButton.src = 'images/pause.png';
