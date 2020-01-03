@@ -15,7 +15,7 @@ function playButtonOnClick(event) {
   console.log(event.target.dataset.play)
 
   var request = fetch(beforeFetchURL + 'https://api-v2.soundcloud.com/playlists/' + event.target.dataset.play
-+ '?representation=full&format=json&client_id=r4nH5X72hWzUcXFiXFCBs275NbNMSF8Y')
++ '?representation=full&format=json&client_id=CENSORED')
   .then(response => response.json())
   .then(function(playlist) {
     console.log(playlist)
